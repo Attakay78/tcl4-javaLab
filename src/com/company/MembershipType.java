@@ -1,20 +1,8 @@
 package com.company;
 
-public class MembershipType {
-    private String membershipStatus;
-
+public abstract class MembershipType {
+    public int maxTrade;
+    public abstract String getMembershipName();
 }
 
-
- class Bronze extends  MembershipType{
-
-}
-
-class Silver extends  MembershipType{
-
-}
-
-class Gold extends  MembershipType{
-
-}
 

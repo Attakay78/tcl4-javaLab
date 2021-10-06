@@ -3,17 +3,16 @@ package com.company;
 import java.util.Date;
 
 class FundTrade extends Trade{
-    private double dividend;
+    private double percentage;
     private Date timeDate;
 
-    FundTrade(String ID, String symbol, int quantity, double price, double dividend) {
+    FundTrade(String ID, String symbol, int quantity, double price, double percentage) {
         super(ID, symbol, quantity, price);
-        this.dividend = dividend;
+        this.percentage = percentage;
         this.timeDate = new Date();
     }
 
     public double calcDividend(){
-        this.dividend = 0.05 * this.getPrice();
-        return this.dividend;
+        return this.percentage * this.getPrice();
     }
 }

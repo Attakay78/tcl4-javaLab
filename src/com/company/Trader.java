@@ -1,29 +1,43 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //Trader class
 public class Trader {
     private String name; //trader name
     private Account account; //trader account
-    private String tradeType; // trade type {"Fund", "Bond"}
+    private List<Trade> listTrades;
 
     Trader(String name){
         this.name = name;
         this.account = new Account(); //creating a new account for trader
+        this.listTrades = new ArrayList<Trade>();
     }
+
     //method to add trader trade
-    public void addTrade(String ID, String symbol, int quantity, double price, String type, double dividend){
-        double tradeValue;
+    public void addTrade(Trade trade){
+        int checkCondition = 0;
 
-        if (type == "Bond") {
-            BondTrade trade = new BondTrade(ID, symbol, quantity, price, dividend); //creating a trade for trader
-            tradeValue = trade.getPrice() * trade.getQuantity(); // calculate trade value
-            this.account.setValue(tradeValue); //setting trader trade value
-        }
-        else if(type == "Fund"){
-            FundTrade trade = new FundTrade(ID, symbol, quantity, price,  dividend); //creating a trade for trader
-            tradeValue = trade.getPrice() * trade.getQuantity(); // calculate trade value
-            this.account.setValue(tradeValue); //setting trader trade value
+        if(listTrades.isEmpty()){
+            listTrades.add(trade);
+        }else{
+            for(Trade oldTrade : listTrades){
+                if(oldTrade.getID() == trade.getID()){
+                    //throw error
+                    checkCondition++;
+                }else{
+                   //
+                }
+            }
+            if(checkCondition >= 1){
+                //
+            }else{
+                listTrades.add(trade);
+                this.account.setValue(trade.getPrice() * trade.getQuantity());
+            }
         }
 
     }
+
 }

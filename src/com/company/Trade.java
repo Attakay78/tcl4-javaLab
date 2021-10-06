@@ -1,5 +1,9 @@
 package com.company;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Date;
+
 //Trade class
 abstract class Trade {
     private final String ID; // trade ID
@@ -16,6 +20,9 @@ abstract class Trade {
         this.price = price;
     }
 
+    public String getID() {
+        return ID;
+    }
 //    trade constructor with all attributes present except price
 //    Trade(String ID, String symbol, int quantity){
 //        this.ID = ID;
@@ -23,7 +30,8 @@ abstract class Trade {
 //        this.quantity = quantity;
 //    }
 
-    //a toString method to print trade info in user readable form
+    //a toString method to print trade info in user readable for
+    @Override
     public String toString(){
         return ID + " " + symbol + " " + quantity + " " + price;
     }
